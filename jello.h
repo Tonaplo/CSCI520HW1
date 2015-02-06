@@ -80,6 +80,12 @@ extern struct world jello;
   y = (x2) * (z1) - (x1) * (z2);\
   z = (x1) * (y2) - (x2) * (y1)
 
+//This function computes the dotproduct of two vectors and stores it in dest
+#define DOTPRODUCTp(vector1,vector2,dest)\
+\
+  dest = (vector1).x * (vector2).x + (vector1).y * (vector2).y + (vector1).z * (vector2).z
+
+
 // normalizes vector dest
 // struct point dest
 // result returned in dest
@@ -91,6 +97,18 @@ extern struct world jello;
   (dest).x /= length;\
   (dest).y /= length;\
   (dest).z /= length;
+
+// returns the length of a length
+#define pLENGTH(vector, length)\
+\
+  length = sqrt((vector).x * (vector).x + (vector).y * (vector).y + (vector).z * (vector).z);
+
+// Initializes a vector to be all 0
+#define pINIT(source)\
+\
+  (source).x = 0;\
+  (source).y = 0;\
+  (source).z = 0;
 
 // copies vector source to vector dest
 // struct point source,dest

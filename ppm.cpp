@@ -4,7 +4,7 @@
 #include <sys/types.h>
 #include <ctype.h>
 #include <string>
-
+#pragma warning(disable:4996)
 #include "pic.h"
 
 /*

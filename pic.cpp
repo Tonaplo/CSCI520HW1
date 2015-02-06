@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "pic.h"
+#pragma warning(disable:4996)
 
 /*
  * pic_alloc: allocate picture memory.

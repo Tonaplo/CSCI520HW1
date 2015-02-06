@@ -217,7 +217,49 @@ void doIdle()
 
   if (pause == 0)
   {
-    // insert code which appropriately performs one step of the cube simulation:
+		// insert code which appropriately performs one step of the cube simulation:
+	  //Set up the acceleration array and variables to hold the increment in velocity and position displacement of vertices.
+	  point a[8][8][8];
+	  point addedVelocity;
+	  point addedPosition;
+	  for (int i = 0; i < 8; i++)
+	  {
+		  for (int j = 0; j < 8; j++)
+		  {
+			  for (int k = 0; k < 8; k++)
+			  {
+				  pINIT(a[i][j][k]);
+			  }
+		  }
+	  }
+
+	  //Call the compute acceleration method
+	  computeAcceleration(&jello, a);
+
+      //We need to go through all points, therefore we need a triple nested for loop:
+	  for (int i = 0; i < 8; i++)
+	  {
+		  for (int j = 0; j < 8; j++)
+		  {
+			  for (int k = 0; k < 8; k++)
+			  {
+				  //multiply acceleration calculate with timestep
+				  pMULTIPLY(a[i][j][k], jello.dt, addedVelocity);
+
+				  //and add it to the velocity
+				  pSUM(jello.v[i][j][k], addedVelocity, jello.v[i][j][k]);
+
+				  //Multiply the velocity by the timestep to get the displaced position:
+				  pMULTIPLY(jello.v[i][j][k], jello.dt, addedPosition);
+
+				  point test = jello.p[i][j][k];
+				  //Finally, add the velocity*dt to the currentposition, obtaining a new position
+				  pSUM(jello.p[i][j][k], addedPosition, jello.p[i][j][k]);
+			  }
+		  }
+	  }
+
+	// computeAcceleration(&jello, jello.p);
   }
 
   glutPostRedisplay();
