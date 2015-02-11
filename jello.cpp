@@ -218,7 +218,21 @@ void doIdle()
   if (pause == 0)
   {
 		// insert code which appropriately performs one step of the cube simulation:
-	  //Set up the acceleration array and variables to hold the increment in velocity and position displacement of vertices.
+
+	  //change this value to call either Euler or RK4
+	  if(!true)
+	  {
+		//Euler call to update the Jello cube
+		Euler(&jello);
+	  }
+	  else
+	  {
+		//RK4 call to update Jello Cube
+		  RK4(&jello);
+	  }
+
+	  // I started by setting everything up as if I didnt have to integrate. This code does that.
+	  /*Set up the acceleration array and variables to hold the increment in velocity and position displacement of vertices.
 	  point a[8][8][8];
 	  point addedVelocity;
 	  point addedPosition;
@@ -257,10 +271,10 @@ void doIdle()
 				  pSUM(jello.p[i][j][k], addedPosition, jello.p[i][j][k]);
 			  }
 		  }
-	  }
+	  }*/
 
-	// computeAcceleration(&jello, jello.p);
   }
+  
 
   glutPostRedisplay();
 }

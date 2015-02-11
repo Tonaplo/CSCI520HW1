@@ -98,7 +98,7 @@ extern struct world jello;
   (dest).y /= length;\
   (dest).z /= length;
 
-// returns the length of a length
+// returns the length of a vector
 #define pLENGTH(vector, length)\
 \
   length = sqrt((vector).x * (vector).x + (vector).y * (vector).y + (vector).z * (vector).z);
@@ -135,7 +135,7 @@ extern struct world jello;
   (dest).y = (src1).y + (src2).y;\
   (dest).z = (src1).z + (src2).z;
 
-// dest = src2 - src1
+// dest = src1 - src2
 // struct point src1,src2,dest
 #define pDIFFERENCE(src1,src2,dest)\
 \
@@ -151,6 +151,15 @@ extern struct world jello;
   (dest).x = (src).x * (scalar);\
   (dest).y = (src).y * (scalar);\
   (dest).z = (src).z * (scalar);
+
+// divides components of point src by scalar and returns the result in dest
+// struct point src,dest
+// double scalar
+#define pDIVIDE(src,scalar,dest)\
+\
+  (dest).x = (src).x / (scalar);\
+  (dest).y = (src).y / (scalar);\
+  (dest).z = (src).z / (scalar);
 
 #endif
 
