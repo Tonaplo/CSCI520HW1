@@ -96,7 +96,8 @@ void computeAcceleration(struct world * jello, struct point a[8][8][8])
 				pLENGTH(jello->v[i][j][k], length);
 				if(length > 50.0f)
 				{
-					pMULTIPLY(jello->v[i][j][k], 0.75f, jello->v[i][j][k]);
+					double newLength = length/50.0f;
+					pDIVIDE(jello->v[i][j][k], newLength, jello->v[i][j][k]);
 				}
 			}
 		}
